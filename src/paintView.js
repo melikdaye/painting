@@ -24,13 +24,15 @@ const PaintPage = (props) => {
         setProjectType(event.target.value);
         let sectorsFiltered = data.projectType_sector.filter((sector)=>sector.type === event.target.value)
         getSectors(sectorsFiltered)
+        setSector("")
+        setProd("")
     };
 
     const selectSector = (event) => {
         setSector(event.target.value);
         let prodFiltered = data.sector_product.filter((sector)=>sector.sector === event.target.value)
         getProd(prodFiltered);
-
+        setProd("")
     };
 
     const selectProduct = (event) => {
@@ -90,7 +92,7 @@ const PaintPage = (props) => {
     </FormControl>
 
 
-            <Button disabled={prod.length===0 || color===""} onClick={calculateCost}>Calculate Total Cost</Button>
+            <Button disabled={prod.length===0 || product === "" ||color===""} onClick={calculateCost}>Calculate Total Cost</Button>
             <h4>{cost}</h4>
 
         </Grid>
